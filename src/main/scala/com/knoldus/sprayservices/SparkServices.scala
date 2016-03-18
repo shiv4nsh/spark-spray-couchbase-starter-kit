@@ -62,7 +62,7 @@ trait SparkService extends HttpService {
             val fetchedDocument = Try(idAsRDD.couchbaseGet[JsonDocument]().map(_.content.toString).collect).toOption
             fetchedDocument match {
               case Some(data) => HttpResponse(OK, data(0))
-              case None => HttpResponse(InternalServerError, s"Data is not persisted and something went wrong")
+              case None => HttpResponse(InternalServerError, s"Data is not fetched and something went wrong")
             }
           }
         }
@@ -74,7 +74,7 @@ trait SparkService extends HttpService {
             val emailFetched = viewRDDData.map(_.map(a => a.value.toString))
             emailFetched match {
               case Some(data) => HttpResponse(OK, data(0))
-              case None => HttpResponse(InternalServerError, s"Data is not persisted and something went wrong")
+              case None => HttpResponse(InternalServerError, s"Data is not fetched and something went wrong")
             }
           }
         }
@@ -86,7 +86,7 @@ trait SparkService extends HttpService {
             val emailFetched = n1qlRDD.map(_.map(a => a.value.toString))
             emailFetched match {
               case Some(data) => HttpResponse(OK, data(0))
-              case None => HttpResponse(InternalServerError, s"Data is not persisted and something went wrong")
+              case None => HttpResponse(InternalServerError, s"Data is not fetched and something went wrong")
             }
           }
         }
