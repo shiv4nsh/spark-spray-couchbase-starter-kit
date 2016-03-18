@@ -1,4 +1,5 @@
-name := "spark-spray-starter"
+
+name := "spark-spray-couchbase-starter-kit"
 
 version := "1.0"
 
@@ -24,7 +25,5 @@ mergeStrategy in assembly := {
   case "reference.conf" => MergeStrategy.concat
   case _ => MergeStrategy.first
 }
-
-fork := true
 
 fork in run := true
